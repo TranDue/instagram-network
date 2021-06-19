@@ -9,7 +9,7 @@ const initialState = {
 }
 
 const postReducer = (state = initialState, action) => {
-    switch (action.type){
+    switch (action.type) {
         case POST_TYPES.CREATE_POST:
             return {
                 ...state,

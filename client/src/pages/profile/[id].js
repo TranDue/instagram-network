@@ -18,14 +18,14 @@ const Profile = () => {
     const [saveTab, setSaveTab] = useState(false)
 
     useEffect(() => {
-        if(profile.ids.every(item => item !== id)){
-            dispatch(getProfileUsers({id, auth}))
+        if (profile.ids.every(item => item !== id)) {
+            dispatch(getProfileUsers({ id, auth }))
         }
-    },[id, auth, dispatch, profile.ids])
+    }, [id, auth, dispatch, profile.ids])
 
     return (
         <div className="profile">
-            
+
             <Info auth={auth} profile={profile} dispatch={dispatch} id={id} />
 
             {
@@ -37,17 +37,17 @@ const Profile = () => {
             }
 
             {
-                profile.loading 
-                ? <img className="d-block mx-auto" src={LoadIcon} alt="loading" />
-                : <>
-                    {
-                        saveTab
-                        ? <Saved auth={auth} dispatch={dispatch} />
-                        : <Posts auth={auth} profile={profile} dispatch={dispatch} id={id} />
-                    }
-                </>
+                profile.loading
+                    ? <img className="d-block mx-auto" src={LoadIcon} alt="loading" />
+                    : <>
+                        {
+                            saveTab
+                                ? <Saved auth={auth} dispatch={dispatch} />
+                                : <Posts auth={auth} profile={profile} dispatch={dispatch} id={id} />
+                        }
+                    </>
             }
-            
+
         </div>
     )
 }

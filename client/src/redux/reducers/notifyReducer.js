@@ -8,7 +8,7 @@ const initialState = {
 }
 
 const notifyReducer = (state = initialState, action) => {
-    switch (action.type){
+    switch (action.type) {
         case NOTIFY_TYPES.GET_NOTIFIES:
             return {
                 ...state,

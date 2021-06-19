@@ -9,7 +9,7 @@ const initialState = {
 }
 
 const profileReducer = (state = initialState, action) => {
-    switch (action.type){
+    switch (action.type) {
         case PROFILE_TYPES.LOADING:
             return {
                 ...state,

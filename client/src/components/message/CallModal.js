@@ -29,65 +29,65 @@ const CallModal = () => {
         setTime()
 
         return () => setTotal(0)
-    },[])
+    }, [])
 
     useEffect(() => {
-        setSecond(total%60)
-        setMins(parseInt(total/60))
-        setHours(parseInt(total/3600))
-    },[total])
+        setSecond(total % 60)
+        setMins(parseInt(total / 60))
+        setHours(parseInt(total / 3600))
+    }, [total])
 
 
     // End Call
     const addCallMessage = useCallback((call, times, disconnect) => {
-        if(call.recipient !== auth.user._id || disconnect){
+        if (call.recipient !== auth.user._id || disconnect) {
             const msg = {
                 sender: call.sender,
                 recipient: call.recipient,
-                text: '', 
+                text: '',
                 media: [],
-                call: {video: call.video, times},
+                call: { video: call.video, times },
                 createdAt: new Date().toISOString()
             }
-            dispatch(addMessage({msg, auth, socket}))
+            dispatch(addMessage({ msg, auth, socket }))
         }
-    },[auth, dispatch, socket])
+    }, [auth, dispatch, socket])
 
     const handleEndCall = () => {
         tracks && tracks.forEach(track => track.stop())
-        if(newCall) newCall.close()
+        if (newCall) newCall.close()
         let times = answer ? total : 0
-        socket.emit('endCall', {...call, times})
-        
+        socket.emit('endCall', { ...call, times })
+
         addCallMessage(call, times)
-        dispatch({type: GLOBALTYPES.CALL, payload: null })
+        dispatch({ type: GLOBALTYPES.CALL, payload: null })
     }
 
     useEffect(() => {
-        if(answer){
+        if (answer) {
             setTotal(0)
-        }else{
+        } else {
             const timer = setTimeout(() => {
-                socket.emit('endCall', {...call, times: 0})
+                socket.emit('endCall', { ...call, times: 0 })
                 addCallMessage(call, 0)
-                dispatch({type: GLOBALTYPES.CALL, payload: null })
+                dispatch({ type: GLOBALTYPES.CALL, payload: null })
             }, 15000)
-    
+
             return () => clearTimeout(timer)
         }
-        
-    },[dispatch, answer, call, socket, addCallMessage])
+
+    }, [dispatch, answer, call, socket, addCallMessage])
 
     useEffect(() => {
         socket.on('endCallToClient', data => {
             tracks && tracks.forEach(track => track.stop())
-            if(newCall) newCall.close()
+            if (newCall) newCall.close()
             addCallMessage(data, data.times)
             dispatch({ type: GLOBALTYPES.CALL, payload: null })
         })
 
         return () => socket.off('endCallToClient')
-    },[socket, dispatch, tracks, addCallMessage, newCall])
+    }, [socket, dispatch, tracks, addCallMessage, newCall])
 
 
     // Stream Media
@@ -108,9 +108,9 @@ const CallModal = () => {
             playStream(youVideo.current, stream)
             const track = stream.getTracks()
             setTracks(track)
-            
+
             const newCall = peer.call(call.peerId, stream);
-            newCall.on('stream', function(remoteStream) {
+            newCall.on('stream', function (remoteStream) {
                 playStream(otherVideo.current, remoteStream)
             });
             setAnswer(true)
@@ -121,43 +121,43 @@ const CallModal = () => {
     useEffect(() => {
         peer.on('call', newCall => {
             openStream(call.video).then(stream => {
-                if(youVideo.current){
+                if (youVideo.current) {
                     playStream(youVideo.current, stream)
                 }
                 const track = stream.getTracks()
                 setTracks(track)
-                
+
                 newCall.answer(stream)
-                newCall.on('stream', function(remoteStream) {
-                    if(otherVideo.current){
+                newCall.on('stream', function (remoteStream) {
+                    if (otherVideo.current) {
                         playStream(otherVideo.current, remoteStream)
                     }
                 });
-                setAnswer(true) 
+                setAnswer(true)
                 setNewCall(newCall)
             })
         })
         return () => peer.removeListener('call')
-    },[peer, call.video])
+    }, [peer, call.video])
 
     // Disconnect
     useEffect(() => {
         socket.on('callerDisconnect', () => {
             tracks && tracks.forEach(track => track.stop())
-            if(newCall) newCall.close()
+            if (newCall) newCall.close()
             let times = answer ? total : 0
             addCallMessage(call, times, true)
 
-            dispatch({type: GLOBALTYPES.CALL, payload: null })
+            dispatch({ type: GLOBALTYPES.CALL, payload: null })
 
             dispatch({
-                type: GLOBALTYPES.ALERT, 
-                payload: {error: `The ${call.username} disconnect`} 
+                type: GLOBALTYPES.ALERT,
+                payload: { error: `The ${call.username} disconnect` }
             })
         })
 
         return () => socket.off('callerDisconnect')
-    },[socket, tracks, dispatch, call, addCallMessage, answer, total, newCall])
+    }, [socket, tracks, dispatch, call, addCallMessage, answer, total, newCall])
 
     // Play - Pause Audio
     const playAudio = (newAudio) => {
@@ -171,14 +171,14 @@ const CallModal = () => {
 
     useEffect(() => {
         let newAudio = new Audio(RingRing)
-        if(answer){
+        if (answer) {
             pauseAudio(newAudio)
-        }else{
+        } else {
             playAudio(newAudio)
         }
 
         return () => pauseAudio(newAudio)
-    },[answer])
+    }, [answer])
 
 
     return (
@@ -187,66 +187,66 @@ const CallModal = () => {
                 display: (answer && call.video) ? 'none' : 'flex'
             }} >
 
-                <div className="text-center" style={{padding: '40px 0'}} >
+                <div className="text-center" style={{ padding: '40px 0' }} >
                     <Avatar src={call.avatar} size="supper-avatar" />
                     <h4>{call.username}</h4>
                     <h6>{call.fullname}</h6>
 
                     {
-                        answer 
-                        ? <div>
-                            <span>{ hours.toString().length < 2 ? '0' + hours : hours }</span>
-                            <span>:</span>
-                            <span>{ mins.toString().length < 2 ? '0' + mins : mins }</span>
-                            <span>:</span>
-                            <span>{ second.toString().length < 2 ? '0' + second : second }</span>
-                        </div>
-                        : <div>
-                            {
-                                call.video
-                                ? <span>calling video...</span>
-                                : <span>calling audio...</span>
-                            }
-                        </div>
+                        answer
+                            ? <div>
+                                <span>{hours.toString().length < 2 ? '0' + hours : hours}</span>
+                                <span>:</span>
+                                <span>{mins.toString().length < 2 ? '0' + mins : mins}</span>
+                                <span>:</span>
+                                <span>{second.toString().length < 2 ? '0' + second : second}</span>
+                            </div>
+                            : <div>
+                                {
+                                    call.video
+                                        ? <span>calling video...</span>
+                                        : <span>calling audio...</span>
+                                }
+                            </div>
                     }
-                    
+
                 </div>
-                
+
                 {
-                    !answer && 
+                    !answer &&
                     <div className="timer">
-                        <small>{ mins.toString().length < 2 ? '0' + mins : mins }</small>
+                        <small>{mins.toString().length < 2 ? '0' + mins : mins}</small>
                         <small>:</small>
-                        <small>{ second.toString().length < 2 ? '0' + second : second }</small>
+                        <small>{second.toString().length < 2 ? '0' + second : second}</small>
                     </div>
                 }
-                
+
 
                 <div className="call_menu">
                     <button className="material-icons text-danger"
-                    onClick={handleEndCall}>
+                        onClick={handleEndCall}>
                         call_end
                     </button>
-                    
+
                     {
                         (call.recipient === auth.user._id && !answer) &&
                         <>
                             {
                                 call.video
-                                ? <button className="material-icons text-success"
-                                onClick={handleAnswer}>
-                                    videocam
-                                </button>
-                                : <button className="material-icons text-success"
-                                onClick={handleAnswer}>
-                                    call
-                                </button>
+                                    ? <button className="material-icons text-success"
+                                        onClick={handleAnswer}>
+                                        videocam
+                                    </button>
+                                    : <button className="material-icons text-success"
+                                        onClick={handleAnswer}>
+                                        call
+                                    </button>
                             }
                         </>
                     }
-                    
+
                 </div>
-                
+
             </div>
 
             <div className="show_video" style={{
@@ -258,15 +258,15 @@ const CallModal = () => {
                 <video ref={otherVideo} className="other_video" playsInline />
 
                 <div className="time_video">
-                    <span>{ hours.toString().length < 2 ? '0' + hours : hours }</span>
+                    <span>{hours.toString().length < 2 ? '0' + hours : hours}</span>
                     <span>:</span>
-                    <span>{ mins.toString().length < 2 ? '0' + mins : mins }</span>
+                    <span>{mins.toString().length < 2 ? '0' + mins : mins}</span>
                     <span>:</span>
-                    <span>{ second.toString().length < 2 ? '0' + second : second }</span>
+                    <span>{second.toString().length < 2 ? '0' + second : second}</span>
                 </div>
 
                 <button className="material-icons text-danger end_call"
-                onClick={handleEndCall}>
+                    onClick={handleEndCall}>
                     call_end
                 </button>
 

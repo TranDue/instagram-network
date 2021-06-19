@@ -16,7 +16,7 @@ const Search = () => {
 
     const handleSearch = async (e) => {
         e.preventDefault()
-        if(!search) return;
+        if (!search) return;
 
         try {
             setLoad(true)
@@ -25,7 +25,7 @@ const Search = () => {
             setLoad(false)
         } catch (err) {
             dispatch({
-                type: GLOBALTYPES.ALERT, payload: {error: err.response.data.msg}
+                type: GLOBALTYPES.ALERT, payload: { error: err.response.data.msg }
             })
         }
     }
@@ -38,30 +38,30 @@ const Search = () => {
     return (
         <form className="search_form" onSubmit={handleSearch}>
             <input type="text" name="search" value={search} id="search" title="Enter to Search"
-            onChange={e => setSearch(e.target.value.toLowerCase().replace(/ /g, ''))} />
+                onChange={e => setSearch(e.target.value.toLowerCase().replace(/ /g, ''))} />
 
-            <div className="search_icon" style={{opacity: search ? 0 : 0.3}}>
+            <div className="search_icon" style={{ opacity: search ? 0 : 0.3 }}>
                 <span className="material-icons">search</span>
                 <span>Enter to Search</span>
             </div>
 
             <div className="close_search" onClick={handleClose}
-            style={{opacity: users.length === 0 ? 0 : 1}} >
+                style={{ opacity: users.length === 0 ? 0 : 1 }} >
                 &times;
             </div>
 
-            <button type="submit" style={{display: 'none'}}>Search</button>
+            <button type="submit" style={{ display: 'none' }}>Search</button>
 
-            { load && <img className="loading" src={LoadIcon} alt="loading"  /> }
+            {load && <img className="loading" src={LoadIcon} alt="loading" />}
 
             <div className="users">
                 {
                     search && users.map(user => (
-                        <UserCard 
-                        key={user._id} 
-                        user={user} 
-                        border="border"
-                        handleClose={handleClose} 
+                        <UserCard
+                            key={user._id}
+                            user={user}
+                            border="border"
+                            handleClose={handleClose}
                         />
                     ))
                 }

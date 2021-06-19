@@ -3,7 +3,7 @@ import { GLOBALTYPES } from '../actions/globalTypes'
 const initialState = {}
 
 const alertReducer = (state = initialState, action) => {
-    switch (action.type){
+    switch (action.type) {
         case GLOBALTYPES.ALERT:
             return action.payload;
         default:
