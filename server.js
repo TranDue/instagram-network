@@ -7,23 +7,37 @@ const SocketServer = require('./socketServer')
 const { ExpressPeerServer } = require('peer')
 const path = require('path')
 
-
 const app = express()
 app.use(express.json())
 app.use(cors())
 app.use(cookieParser())
+require("express")()
 
-
+// let app = require("express")();
 // Socket
-const http = require('http').createServer(app)
-const io = require('socket.io')(http)
+// io.set('transports', ['websocket']) //config
 
-io.on('connection', socket => {
-    SocketServer(socket)
-})
+// let server = rSSSequire("http").Server(app);
+// let io = sio(server);
+// sio = require('socket.io')
 
+//  const http = require('http').createServer(app)
+// console.log({ sio });
+const http = require('http')
+const server = http.createServer(app);
+const Server = require("socket.io");
+const io = new Server(server);
+
+io
+    .set('transports', ['websocket'])
+    .on('connection', (socket) => {
+        console.log('a user connected');
+        console.log({ socket })
+    });
+
+// cai clieant dau cho socket client dau
 // Create peer server
-ExpressPeerServer(http, { path: '/' })
+// ExpressPeerServer(http, { path: '/' })
 
 
 // Routes
@@ -52,10 +66,6 @@ if (process.env.NODE_ENV === 'production') {
         res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
     })
 }
-
-app.get('/', (req, res) => {
-    res.json({ msg: "hello" })
-})
 
 const port = process.env.PORT || 5000
 app.listen(port, () => {

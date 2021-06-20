@@ -6,7 +6,7 @@ const authCtrl = {
     register: async (req, res) => {
         try {
             const { fullname, username, email, password, gender } = req.body
-            let newUserName = username.toLowerCase().replace(/ /g, '')
+            let newUserName = username.replace(/ /g, '')
 
             const user_name = await Users.findOne({ username: newUserName })
             if (user_name) return res.status(400).json({ msg: "This user name already exists." })

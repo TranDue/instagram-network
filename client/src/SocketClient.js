@@ -6,8 +6,7 @@ import { NOTIFY_TYPES } from './redux/actions/notifyAction'
 import { MESS_TYPES } from './redux/actions/messageAction'
 
 import audiobell from './audio/got-it-done-613.mp3'
-
-
+// cho connect cho nao
 const spawnNotification = (body, icon, url, title) => {
     let options = {
         body, icon
@@ -19,8 +18,8 @@ const spawnNotification = (body, icon, url, title) => {
         window.open(url, '_blank')
     }
 }
-
 const SocketClient = () => {
+
     const { auth, socket, notify, online, call } = useSelector(state => state)
     const dispatch = useDispatch()
 
@@ -95,7 +94,7 @@ const SocketClient = () => {
                 msg.user.username + ' ' + msg.text,
                 msg.user.avatar,
                 msg.url,
-                'V-NETWORK'
+                'Instagram-NETWORK'
             )
         })
 

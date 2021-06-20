@@ -35,7 +35,7 @@ const Register = () => {
     return (
         <div className="auth_page">
             <form onSubmit={handleSubmit}>
-                <h3 className="text-uppercase text-center mb-4">V-Network</h3>
+                <h3 className="text-uppercase text-center mb-4">Instagram-Network</h3>
 
                 <div className="form-group">
                     <label htmlFor="fullname">Full Name</label>
@@ -51,7 +51,7 @@ const Register = () => {
                 <div className="form-group">
                     <label htmlFor="username">User Name</label>
                     <input type="text" className="form-control" id="username" name="username"
-                        onChange={handleChangeInput} value={username.toLowerCase().replace(/ /g, '')}
+                        onChange={handleChangeInput} value={username.replace(/ /g, '')}
                         style={{ background: `${alert.username ? '#fd2d6a14' : ''}` }} />
 
                     <small className="form-text text-danger">

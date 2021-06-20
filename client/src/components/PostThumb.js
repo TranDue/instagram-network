@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 
 const PostThumb = ({ posts, result }) => {
     const { theme } = useSelector(state => state)
-
+    console.log("a", theme)
     if (result === 0) return <h2 className="text-center text-danger">No Post</h2>
 
     return (
