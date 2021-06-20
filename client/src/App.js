@@ -32,9 +32,7 @@ function App() {
   useEffect(() => {
     dispatch(refreshToken())
 
-    const socket = io.connect('http://localhost:5000', {
-      transports: ['websocket'], upgrade: false
-    });
+    const socket = io()
     dispatch({ type: GLOBALTYPES.SOCKET, payload: socket })
     return () => socket.close()
   }, [dispatch])

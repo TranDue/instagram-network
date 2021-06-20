@@ -65,6 +65,7 @@ const SocketServer = (socket) => {
 
     // Comments
     socket.on('createComment', newPost => {
+        console.log(newPost)
         const ids = [...newPost.user.followers, newPost.user._id]
         const clients = users.filter(user => ids.includes(user.id))
 

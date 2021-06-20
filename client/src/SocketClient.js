@@ -6,7 +6,7 @@ import { NOTIFY_TYPES } from './redux/actions/notifyAction'
 import { MESS_TYPES } from './redux/actions/messageAction'
 
 import audiobell from './audio/got-it-done-613.mp3'
-// cho connect cho nao
+
 const spawnNotification = (body, icon, url, title) => {
     let options = {
         body, icon
@@ -34,6 +34,7 @@ const SocketClient = () => {
     useEffect(() => {
         socket.on('likeToClient', newPost => {
             dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost })
+            console.log(newPost)
         })
 
         return () => socket.off('likeToClient')
