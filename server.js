@@ -35,9 +35,8 @@ io
         console.log({ socket })
     });
 
-// cai clieant dau cho socket client dau
 // Create peer server
-// ExpressPeerServer(http, { path: '/' })
+ExpressPeerServer(http, { path: '/' })
 
 
 // Routes
