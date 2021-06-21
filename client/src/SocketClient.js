@@ -34,7 +34,6 @@ const SocketClient = () => {
     useEffect(() => {
         socket.on('likeToClient', newPost => {
             dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost })
-            console.log(newPost)
         })
 
         return () => socket.off('likeToClient')
