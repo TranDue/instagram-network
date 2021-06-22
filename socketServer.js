@@ -141,14 +141,15 @@ const SocketServer = (socket) => {
 
     // Call User
     socket.on('callUser', data => {
+
         users = EditData(users, data.sender, data.recipient)
 
         const client = users.find(user => user.id === data.recipient)
 
         if (client) {
-            if (client.call) {
-                socket.emit('userBusy', data)
+            if (data.call) {
                 users = EditData(users, data.sender, null)
+                socket.emit('userBusy', data)
             } else {
                 users = EditData(users, data.recipient, data.sender)
                 socket.to(`${client.socketId}`).emit('callUserToClient', data)
@@ -170,6 +171,7 @@ const SocketServer = (socket) => {
                 users = EditData(users, client.call, null)
             }
         }
+        console.log({ new: users })
     })
 }
 

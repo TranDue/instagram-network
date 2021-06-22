@@ -19,6 +19,7 @@ const io = require('socket.io')(http)
 io.on('connection', socket => {
     SocketServer(socket)
 })
+
 // Create peer server
 ExpressPeerServer(http, { path: '/' })
 

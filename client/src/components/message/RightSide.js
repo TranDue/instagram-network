@@ -165,7 +165,7 @@ const RightSide = () => {
         }
 
         if (peer.open) msg.peerId = peer._id
-
+        // console.log('peer >>>>>', peer)
         socket.emit('callUser', msg)
     }
 
