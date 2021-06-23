@@ -50,7 +50,7 @@ const Register = () => {
 
                 <div className="form-group">
                     <label htmlFor="username">User Name</label>
-                    <input type="text" className="form-control" id="username" name="username"
+                    <input pattern="^[a-zA-Z0-9\+]*$" type="text" className="form-control" id="username" name="username"
                         onChange={handleChangeInput} value={username.toLowerCase().replace(/ /g, '')}
                         style={{ background: `${alert.username ? '#fd2d6a14' : ''}` }} />
 
