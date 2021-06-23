@@ -4,7 +4,7 @@ const Icons = ({ setContent, content, theme }) => {
     const reactions = [
         '❤️', '😆', '😯', '😢', '😡', '👍', '👎', '😄',
         '😂', '😍', '😘', '😗', '😚', '😳', '😭', '😓',
-        '😤', '👻', '💀', '🤐', '😴', '😷', '😵', '🥴', '🙂', '🤗', '🤤', '🤑', '😰'
+        '😤', '👻', '💀', '🤐', '😴', '😷', '😵', '🙂', '🤗', '🤤', '🤑', '😰'
     ]
 
     return (
@@ -16,7 +16,7 @@ const Icons = ({ setContent, content, theme }) => {
                 <span style={{ opacity: 0.4 }}>😄</span>
             </span>
 
-            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div style={{ opacity: 1 }} className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <div className="reactions">
                     {
                         reactions.map(icon => (

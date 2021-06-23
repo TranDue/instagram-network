@@ -51,7 +51,7 @@ const Register = () => {
                 <div className="form-group">
                     <label htmlFor="username">User Name</label>
                     <input type="text" className="form-control" id="username" name="username"
-                        onChange={handleChangeInput} value={username.replace(/ /g, '')}
+                        onChange={handleChangeInput} value={username.toLowerCase().replace(/ /g, '')}
                         style={{ background: `${alert.username ? '#fd2d6a14' : ''}` }} />
 
                     <small className="form-text text-danger">
@@ -75,10 +75,13 @@ const Register = () => {
 
                     <div className="pass">
 
-                        <input type={typePass ? "text" : "password"}
+                        <input
+                            pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$"
+                            type={typePass ? "text" : "password"}
                             className="form-control" id="exampleInputPassword1"
                             onChange={handleChangeInput} value={password} name="password"
-                            style={{ background: `${alert.password ? '#fd2d6a14' : ''}` }} />
+                            style={{ background: `${alert.password ? '#fd2d6a14' : ''}` }}
+                        />
 
                         <small onClick={() => setTypePass(!typePass)}>
                             {typePass ? 'Hide' : 'Show'}

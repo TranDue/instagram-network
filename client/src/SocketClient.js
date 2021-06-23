@@ -182,8 +182,6 @@ const SocketClient = () => {
         return () => socket.off('userBusy')
     }, [socket, dispatch, call])
 
-
-
     return (
         <>
             <audio controls ref={audioRef} style={{ display: 'none' }} >

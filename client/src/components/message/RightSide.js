@@ -266,7 +266,7 @@ const RightSide = () => {
                 <div className="file_upload">
                     <i className="fas fa-image text-danger" />
                     <input type="file" name="file" id="file"
-                        multiple accept="image/*,video/*" onChange={handleChangeMedia} />
+                        multiple accept="image/*,video/*,file/*" onChange={handleChangeMedia} />
                 </div>
 
                 <button type="submit" className="material-icons"

@@ -180,7 +180,7 @@ const StatusModal = () => {
                                     <div className="file_upload">
                                         <i className="fas fa-image" />
                                         <input type="file" name="file" id="file"
-                                            multiple accept="image/*,video/*" onChange={handleChangeImages} />
+                                            multiple accept="image/*,video/*,file/*" onChange={handleChangeImages} />
                                     </div>
                                 </>
                         }

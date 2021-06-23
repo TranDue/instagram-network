@@ -74,7 +74,7 @@ const EditProfile = ({ setOnEdit }) => {
 
                 <div className="form-group">
                     <label htmlFor="mobile">Mobile</label>
-                    <input pattern="^[\+]?\d{10}$" type="text" name="mobile" value={mobile}
+                    <input pattern="^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$" type="text" name="mobile" value={mobile}
                         className="form-control" onChange={handleInput} />
                 </div>
 
