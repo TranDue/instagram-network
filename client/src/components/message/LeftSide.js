@@ -48,9 +48,6 @@ const LeftSide = () => {
         return ''
     }
 
-    const addGroupChat = () => {
-        alert("open add group chat")
-    }
     useEffect(() => {
         if (message.firstLoad) return;
         dispatch(getConversations({ auth }))
