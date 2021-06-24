@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://ken-network.herokuapp.com'
+export const BASE_URL = 'https://duetran-network.herokuapp.com'
