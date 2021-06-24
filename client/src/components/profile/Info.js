@@ -6,7 +6,7 @@ import Followers from './Followers'
 import Following from './Following'
 import { GLOBALTYPES } from '../../redux/actions/globalTypes'
 
-const Info = ({id, auth, profile, dispatch}) => {
+const Info = ({ id, auth, profile, dispatch }) => {
     const [userData, setUserData] = useState([])
     const [onEdit, setOnEdit] = useState(false)
 
@@ -14,9 +14,9 @@ const Info = ({id, auth, profile, dispatch}) => {
     const [showFollowing, setShowFollowing] = useState(false)
 
     useEffect(() => {
-        if(id === auth.user._id){
+        if (id === auth.user._id) {
             setUserData([auth.user])
-        }else{
+        } else {
             const newData = profile.users.filter(user => user._id === id)
             setUserData(newData)
         }
@@ -24,13 +24,13 @@ const Info = ({id, auth, profile, dispatch}) => {
 
 
     useEffect(() => {
-        if(showFollowers || showFollowing || onEdit){
-            dispatch({ type: GLOBALTYPES.MODAL, payload: true})
-        }else{
-            dispatch({ type: GLOBALTYPES.MODAL, payload: false})
+        if (showFollowers || showFollowing || onEdit) {
+            dispatch({ type: GLOBALTYPES.MODAL, payload: true })
+        } else {
+            dispatch({ type: GLOBALTYPES.MODAL, payload: false })
         }
-    },[showFollowers, showFollowing, onEdit, dispatch])
-    
+    }, [showFollowers, showFollowing, onEdit, dispatch])
+
 
     return (
         <div className="info">
@@ -44,15 +44,15 @@ const Info = ({id, auth, profile, dispatch}) => {
                                 <h2>{user.username}</h2>
                                 {
                                     user._id === auth.user._id
-                                    ?  <button className="btn btn-outline-info"
-                                    onClick={() => setOnEdit(true)}>
-                                        Edit Profile
-                                    </button>
-                                    
-                                    : <FollowBtn user={user} />
+                                        ? <button className="btn btn-outline-info"
+                                            onClick={() => setOnEdit(true)}>
+                                            Edit Profile
+                                        </button>
+
+                                        : <FollowBtn user={user} />
                                 }
-                               
-                                
+
+
                             </div>
 
                             <div className="follow_btn">
@@ -79,16 +79,16 @@ const Info = ({id, auth, profile, dispatch}) => {
 
                         {
                             showFollowers &&
-                            <Followers 
-                            users={user.followers} 
-                            setShowFollowers={setShowFollowers} 
+                            <Followers
+                                users={user.followers}
+                                setShowFollowers={setShowFollowers}
                             />
                         }
                         {
                             showFollowing &&
-                            <Following 
-                            users={user.following} 
-                            setShowFollowing={setShowFollowing} 
+                            <Following
+                                users={user.following}
+                                setShowFollowing={setShowFollowing}
                             />
                         }
                     </div>

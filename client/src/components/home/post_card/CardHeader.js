@@ -7,19 +7,19 @@ import { GLOBALTYPES } from '../../../redux/actions/globalTypes'
 import { deletePost } from '../../../redux/actions/postAction'
 import { BASE_URL } from '../../../utils/config'
 
-const CardHeader = ({post}) => {
+const CardHeader = ({ post }) => {
     const { auth, socket } = useSelector(state => state)
     const dispatch = useDispatch()
 
     const history = useHistory()
 
     const handleEditPost = () => {
-        dispatch({ type: GLOBALTYPES.STATUS, payload: {...post, onEdit: true}})
+        dispatch({ type: GLOBALTYPES.STATUS, payload: { ...post, onEdit: true } })
     }
 
     const handleDeletePost = () => {
-        if(window.confirm("Are you sure want to delete this post?")){
-            dispatch(deletePost({post, auth, socket}))
+        if (window.confirm("Are you sure want to delete this post?")) {
+            dispatch(deletePost({ post, auth, socket }))
             return history.push("/")
         }
     }

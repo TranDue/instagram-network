@@ -22,6 +22,7 @@ export const imageUpload = async (images) => {
         } else {
             formData.append("file", item)
         }
+        console.log("file ->", item)
 
         formData.append("upload_preset", "cye4ewmq")
         formData.append("cloud_name", "due")

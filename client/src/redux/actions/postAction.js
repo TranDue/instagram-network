@@ -40,7 +40,8 @@ export const createPost = ({ content, images, auth, socket }) => async (dispatch
 
         dispatch(createNotify({ msg, auth, socket }))
 
-    } catch (err) {
+    }
+    catch (err) {
         dispatch({
             type: GLOBALTYPES.ALERT,
             payload: { error: err.response.data.msg }

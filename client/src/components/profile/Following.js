@@ -3,13 +3,13 @@ import UserCard from '../UserCard'
 import FollowBtn from '../FollowBtn'
 import { useSelector } from 'react-redux'
 
-const Following = ({users, setShowFollowing}) => {
+const Following = ({ users, setShowFollowing }) => {
     const { auth } = useSelector(state => state)
     return (
         <div className="follow">
             <div className="follow_box">
                 <h5 className="text-center">Following</h5>
-                <hr/>
+                <hr />
 
                 <div className="follow_content">
                     {
@@ -26,7 +26,7 @@ const Following = ({users, setShowFollowing}) => {
                 <div className="close" onClick={() => setShowFollowing(false)}>
                     &times;
                 </div>
-                
+
             </div>
         </div>
     )
