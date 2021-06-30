@@ -14,8 +14,14 @@ const Message = () => {
 
                     <i className="fab fa-facebook-messenger text-primary"
                         style={{ fontSize: '5rem' }} />
-                    <h4>Messenger</h4>
-
+                    <h3>Messenger</h3>
+                    <h5>Your Messages</h5>
+                    <span style={{
+                        color: 'gray'
+                    }}>
+                        Send private photos and messages to a friend or group.
+                    </span>
+                    <span aria-label="Direct" class="glyphsSpriteDirect__outline__96 u-__7"></span>
                 </div>
             </div>
         </div>

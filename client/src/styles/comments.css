@@ -17,7 +17,7 @@
   font-weight: 600;
 }
 .comment_input .dropdown-menu {
-  transform: translate3d(-120px, -200px, 0px) !important;
+  transform: translate3d(-120px, -250px, 0px) !important;
 }
 
 /* ---------- Comments ---------- */
