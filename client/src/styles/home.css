@@ -33,6 +33,7 @@
   padding: 15px 25px;
 }
 .posts .card_header .card_name {
+  padding-left: 10px;
   transform: translateY(3px);
 }
 .posts .card_header .dropdown-menu {
