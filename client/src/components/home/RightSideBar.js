@@ -15,7 +15,7 @@ const RightSideBar = () => {
             <UserCard user={auth.user} />
 
             <div className="d-flex justify-content-between align-items-center my-2">
-                <h5 className="text-danger">Suggestions for you</h5>
+                <h6 className="text-secondary">Suggestions for you</h6>
                 {
                     !suggestions.loading &&
                     <i className="fas fa-redo" style={{ cursor: 'pointer' }}
@@ -43,11 +43,11 @@ const RightSideBar = () => {
                     Contact for Work with GitHub
                 </a>
                 <small className="d-block">
-                    Welcome to our channel "Due Tran"
+                    Welcome to "Due Tran"
                 </small>
 
                 <small>
-                    &copy; 2021 Instagram FROM DEV Due Tran
+                    &copy; 2021 Instagram from Due Tran
                 </small>
             </div>
 

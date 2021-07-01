@@ -13,6 +13,7 @@ let scroll = 0;
 const Home = () => {
     const { homePosts } = useSelector(state => state)
 
+    // scroll view home
     window.addEventListener('scroll', () => {
         if (window.location.pathname === '/') {
             scroll = window.pageYOffset
