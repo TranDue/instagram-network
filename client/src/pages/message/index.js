@@ -21,7 +21,7 @@ const Message = () => {
                     }}>
                         Send private photos and messages to a friend or group.
                     </span>
-                    <span aria-label="Direct" class="glyphsSpriteDirect__outline__96 u-__7"></span>
+                    <span aria-label="Direct" className="glyphsSpriteDirect__outline__96 u-__7"></span>
                 </div>
             </div>
         </div>

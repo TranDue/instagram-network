@@ -5,7 +5,7 @@ export const checkImage = (file) => {
     if (file.size > 1024 * 1024) // 1mb
         err = "The largest image size is 1mb."
 
-    if (file.type !== 'image/jpeg' && file.type !== 'image/png')
+    if (file.type !== 'image/jpeg' && file.type !== 'image/png' && file.type !== 'image/jpg')
         err = "Image format is incorrect."
 
     return err;
@@ -22,7 +22,8 @@ export const imageUpload = async (images) => {
         } else {
             formData.append("file", item)
         }
-        console.log("file ->", item)
+
+        console.log("post image >>> ", item)
 
         formData.append("upload_preset", "cye4ewmq")
         formData.append("cloud_name", "due")

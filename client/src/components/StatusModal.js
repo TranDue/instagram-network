@@ -52,7 +52,7 @@ const StatusModal = () => {
 
                     const track = mediaStream.getTracks()
                     setTracks(track[0])
-                }).catch(err => console.log(err))
+                }).catch(err => console.log("Không tìm thấy micro/camera", err))
         }
     }
 
@@ -180,7 +180,7 @@ const StatusModal = () => {
                                     <div className="file_upload">
                                         <i className="fas fa-image" />
                                         <input type="file" name="file" id="file"
-                                            multiple accept="image/*,video/*,file/*" onChange={handleChangeImages} />
+                                            multiple accept="image/*,video/*" onChange={handleChangeImages} />
                                     </div>
                                 </>
                         }

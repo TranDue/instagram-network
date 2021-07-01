@@ -7,7 +7,7 @@ import moment from 'moment'
 import { isReadNotify, NOTIFY_TYPES, deleteAllNotifies } from '../redux/actions/notifyAction'
 
 const NotifyModal = () => {
-    const { auth, notify } = useSelector(state => state)
+    const { auth, notify, theme } = useSelector(state => state)
     const dispatch = useDispatch()
 
     const handleIsRead = (msg) => {
@@ -52,7 +52,7 @@ const NotifyModal = () => {
             <div style={{ maxHeight: 'calc(100vh - 200px)', overflow: 'auto' }}>
                 {
                     notify.data.map((msg, index) => (
-                        <div key={index} className="px-2 mb-3" >
+                        <div key={index} className="px-2 mb-3">
                             <Link to={`${msg.url}`} className="d-flex text-dark align-items-center"
                                 onClick={() => handleIsRead(msg)}>
                                 <Avatar src={msg.user.avatar} size="big-avatar" />
@@ -62,7 +62,14 @@ const NotifyModal = () => {
                                         <strong className="mr-1">{msg.user.username}</strong>
                                         <span>{msg.text}</span>
                                     </div>
-                                    {msg.content && <small>{msg.content.slice(0, 20)}...</small>}
+                                    {msg.content &&
+                                        <small
+                                            style={{
+                                                filter: theme ? 'invert(1)' : 'invert(0)',
+                                                color: theme ? 'white' : '#111',
+                                            }}>
+                                            {msg.content.slice(0, 20)}...
+                                        </small>}
                                 </div>
 
                                 {

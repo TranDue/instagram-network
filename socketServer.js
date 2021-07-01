@@ -171,7 +171,6 @@ const SocketServer = (socket) => {
                 users = EditData(users, client.call, null)
             }
         }
-        console.log({ new: users })
     })
 }
 
