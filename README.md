@@ -1,27 +1,20 @@
-# MERN Stack - Build a social media app
+# MERN stack
 
-> MERN Stack Build a social media app (instagram clone) with MERN + Redux + Bootstrap 4
+> MERN Stack Build a  app instagram with MERN + Bootstrap
 
-## Install dependencies for server
+## `npm install`
 
-### `npm install`
+## cd client ---> `npm install`
 
-## Install dependencies for client
-
-### cd client ---> `npm install`
-
-## Connect to your mongodb and add info in .env
-
-## Run the client & server with concurrently
-
-### `npm run dev`
+# Connect to your mongodb and add info in .env
 
 ## Run the Express server only
 
-### `npm run server`
+## `npm run dev`
 
 ## Run the React client only
 
-### `npm run client`
+## cd client ---> `npm start `
 
-### Server runs on http://localhost:5000 and client on http://localhost:3000
+## Server runs on http://localhost:5000 and 
+client on http://localhost:3000
