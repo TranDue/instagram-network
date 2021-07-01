@@ -1,6 +1,6 @@
 # MERN stack
 
-> MERN Stack Build a  app instagram with MERN + Bootstrap
+Build a  app instagram with MERN + Bootstrap
 
 # `npm install`
 
