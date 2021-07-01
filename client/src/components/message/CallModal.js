@@ -160,8 +160,8 @@ const CallModal = () => {
     }, [socket, tracks, dispatch, call, addCallMessage, answer, total, newCall])
 
     // Play - Pause Audio
-    const playAudio = (video) => {
-        video.play()
+    const playAudio = (newAudio) => {
+        newAudio.play()
     }
 
     const pauseAudio = (newAudio) => {
