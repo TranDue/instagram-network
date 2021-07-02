@@ -32,7 +32,6 @@ const Carousel = ({ images, id }) => {
                                     : <img src={img.url} className="d-block w-100" alt={img.url}
                                         style={{ filter: theme ? 'invert(1)' : 'invert(0)' }} />
                             }
-
                         </div>
                     ))
                 }

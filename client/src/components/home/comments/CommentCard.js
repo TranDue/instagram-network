@@ -111,7 +111,6 @@ const CommentCard = ({ children, comment, post, commentId }) => {
                             </div>
                     }
 
-
                     <div style={{ cursor: 'pointer' }}>
                         <small className="text-muted mr-3">
                             {moment(comment.createdAt).fromNow()}

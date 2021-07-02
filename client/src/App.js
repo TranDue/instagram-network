@@ -33,6 +33,7 @@ function App() {
     dispatch(refreshToken())
 
     const socket = io()
+
     dispatch({ type: GLOBALTYPES.SOCKET, payload: socket })
     return () => socket.close()
   }, [dispatch])
