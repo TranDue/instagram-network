@@ -7,7 +7,6 @@ cd client -> `npm install`
 Connect to your mongodb, add info in .env
 
 cd server -> `npm run dev`
-Run the React client only
 
 cd client ---> `npm start `
 
