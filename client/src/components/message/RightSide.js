@@ -22,7 +22,6 @@ const RightSide = () => {
 
     const refDisplay = useRef()
     const pageEnd = useRef()
-
     const [data, setData] = useState([])
     const [result, setResult] = useState(9)
     const [page, setPage] = useState(0)
