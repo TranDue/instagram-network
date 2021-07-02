@@ -1,14 +1,12 @@
-MERN stack
+Webapp instagram with MERN + Bootstrap
 
-Build webapp instagram with MERN + Bootstrap
+cd server -> `npm install`
 
-`npm install`
-
-cd client ---> `npm install`
+cd client -> `npm install`
 
 Connect to your mongodb, add info in .env
 
-`npm run dev`
+cd server -> `npm run dev`
 Run the React client only
 
 cd client ---> `npm start `
