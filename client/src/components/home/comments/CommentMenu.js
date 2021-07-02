@@ -26,7 +26,6 @@ const CommentMenu = ({ post, comment, setOnEdit }) => {
         )
     }
 
-
     return (
         <div className="menu">
             {

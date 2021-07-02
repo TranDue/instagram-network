@@ -52,7 +52,6 @@ const Info = ({ id, auth, profile, dispatch }) => {
                                         : <FollowBtn user={user} />
                                 }
 
-
                             </div>
 
                             <div className="follow_btn">

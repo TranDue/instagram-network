@@ -14,7 +14,6 @@ export const login = (data) => async (dispatch) => {
                 user: res.data.user
             }
         })
-
         localStorage.setItem("firstLogin", true)
         dispatch({
             type: GLOBALTYPES.ALERT,
@@ -22,7 +21,6 @@ export const login = (data) => async (dispatch) => {
                 success: res.data.msg
             }
         })
-
     } catch (err) {
         dispatch({
             type: GLOBALTYPES.ALERT,

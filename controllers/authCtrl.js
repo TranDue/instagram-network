@@ -23,7 +23,6 @@ const authCtrl = {
                 fullname, username: newUserName, email, password: passwordHash, gender
             })
 
-
             const access_token = createAccessToken({ id: newUser._id })
             const refresh_token = createRefreshToken({ id: newUser._id })
 
@@ -114,7 +113,6 @@ const authCtrl = {
         }
     }
 }
-
 
 const createAccessToken = (payload) => {
     return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d' })

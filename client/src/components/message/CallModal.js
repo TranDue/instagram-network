@@ -75,7 +75,6 @@ const CallModal = () => {
 
             return () => clearTimeout(timer)
         }
-
     }, [dispatch, answer, call, socket, addCallMessage])
 
     useEffect(() => {

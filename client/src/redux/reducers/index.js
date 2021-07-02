@@ -16,7 +16,6 @@ import online from './onlineReducer'
 import call from './callReducer'
 import peer from './peerReducer'
 
-
 export default combineReducers({
     auth,
     alert,

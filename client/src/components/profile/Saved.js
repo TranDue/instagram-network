@@ -22,7 +22,6 @@ const Saved = ({ auth, dispatch }) => {
             .catch(err => {
                 dispatch({ type: GLOBALTYPES.ALERT, payload: { error: err.response.data.msg } })
             })
-
         return () => setSavePosts([])
     }, [auth.token, dispatch])
 
@@ -43,10 +42,8 @@ const Saved = ({ auth, dispatch }) => {
                 load && <img src={LoadIcon} alt="loading" className="d-block mx-auto" />
             }
 
-
             <LoadMoreBtn result={result} page={page}
                 load={load} handleLoadMore={handleLoadMore} />
-
         </div>
     )
 }

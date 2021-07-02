@@ -60,7 +60,6 @@ const RightSide = () => {
             if (file.size > 1024 * 1024) {
                 return err = "The image/video largest is 1mb."
             }
-
             return newMedia.push(file)
         })
 
@@ -224,7 +223,6 @@ const RightSide = () => {
                             </div>
                         ))
                     }
-
 
                     {
                         loadMedia &&

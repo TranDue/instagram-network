@@ -30,12 +30,10 @@ export const getProfileUsers = ({ id, auth }) => async (dispatch) => {
             type: PROFILE_TYPES.GET_USER,
             payload: users.data
         })
-
         dispatch({
             type: PROFILE_TYPES.GET_POSTS,
             payload: { ...posts.data, _id: id, page: 2 }
         })
-
         dispatch({ type: PROFILE_TYPES.LOADING, payload: false })
     } catch (err) {
         dispatch({

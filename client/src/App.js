@@ -59,15 +59,12 @@ function App() {
     }
   }, [])
 
-
   useEffect(() => {
     const newPeer = new Peer(undefined, {
       path: '/', secure: true
     })
-
     dispatch({ type: GLOBALTYPES.PEER, payload: newPeer })
   }, [dispatch])
-
 
   return (
     <Router>
@@ -86,7 +83,6 @@ function App() {
 
           <PrivateRouter exact path="/:page" component={PageRender} />
           <PrivateRouter exact path="/:page/:id" component={PageRender} />
-
         </div>
       </div>
     </Router>

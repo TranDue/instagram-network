@@ -37,7 +37,6 @@ const Posts = ({ auth, id, dispatch, profile }) => {
                 load && <img src={LoadIcon} alt="loading" className="d-block mx-auto" />
             }
 
-
             <LoadMoreBtn result={result} page={page}
                 load={load} handleLoadMore={handleLoadMore} />
 

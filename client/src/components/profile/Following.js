@@ -10,7 +10,6 @@ const Following = ({ users, setShowFollowing }) => {
             <div className="follow_box">
                 <h5 className="text-center">Following</h5>
                 <hr />
-
                 <div className="follow_content">
                     {
                         users.map(user => (
@@ -26,7 +25,6 @@ const Following = ({ users, setShowFollowing }) => {
                 <div className="close" onClick={() => setShowFollowing(false)}>
                     &times;
                 </div>
-
             </div>
         </div>
     )

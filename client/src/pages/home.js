@@ -20,7 +20,6 @@ const Home = () => {
             return scroll;
         }
     })
-
     useEffect(() => {
         setTimeout(() => {
             window.scrollTo({ top: scroll, behavior: 'smooth' })
@@ -39,7 +38,6 @@ const Home = () => {
                             ? <h2 className="text-center">No Post</h2>
                             : <Posts />
                 }
-
             </div>
 
             <div className="col-md-4">

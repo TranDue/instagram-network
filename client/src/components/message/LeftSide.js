@@ -20,11 +20,9 @@ const LeftSide = () => {
     const pageEnd = useRef()
     const [page, setPage] = useState(0)
 
-
     const handleSearch = async e => {
         e.preventDefault()
         if (!search) return setSearchUsers([]);
-
         try {
             const res = await getDataAPI(`search?username=${search}`, auth.token)
             setSearchUsers(res.data.users)
@@ -71,7 +69,6 @@ const LeftSide = () => {
             dispatch(getConversations({ auth, page }))
         }
     }, [message.resultUsers, page, auth, dispatch])
-
 
     // Check User Online - Offline
     useEffect(() => {

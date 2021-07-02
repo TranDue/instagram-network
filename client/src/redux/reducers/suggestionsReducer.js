@@ -5,7 +5,6 @@ const initialState = {
     users: []
 }
 
-
 const suggestionsReducer = (state = initialState, action) => {
     switch (action.type) {
         case SUGGES_TYPES.LOADING:
@@ -13,6 +12,7 @@ const suggestionsReducer = (state = initialState, action) => {
                 ...state,
                 loading: action.payload
             };
+
         case SUGGES_TYPES.GET_USERS:
             return {
                 ...state,

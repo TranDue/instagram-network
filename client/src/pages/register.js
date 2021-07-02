@@ -74,7 +74,6 @@ const Register = () => {
                     <label htmlFor="exampleInputPassword1">Password</label>
 
                     <div className="pass">
-
                         <input
                             pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$"
                             type={typePass ? "text" : "password"}

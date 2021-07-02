@@ -29,9 +29,7 @@ export const createComment = ({ post, newComment, auth, socket }) => async (disp
             content: post.content,
             image: post.images[0].url
         }
-
         dispatch(createNotify({ msg, auth, socket }))
-
     } catch (err) {
         dispatch({ type: GLOBALTYPES.ALERT, payload: { error: err.response.data.msg } })
     }
@@ -74,7 +72,6 @@ export const unLikeComment = ({ comment, post, auth }) => async (dispatch) => {
     const newPost = { ...post, comments: newComments }
 
     dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost })
-
     try {
         await patchDataAPI(`comment/${comment._id}/unlike`, null, auth.token)
     } catch (err) {
@@ -89,7 +86,6 @@ export const deleteComment = ({ post, comment, auth, socket }) => async (dispatc
         ...post,
         comments: post.comments.filter(cm => !deleteArr.find(da => cm._id === da._id))
     }
-
     dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost })
 
     socket.emit('deleteComment', newPost)
@@ -103,7 +99,6 @@ export const deleteComment = ({ post, comment, auth, socket }) => async (dispatc
                 recipients: comment.reply ? [comment.tag._id] : [post.user._id],
                 url: `/post/${post._id}`,
             }
-
             dispatch(removeNotify({ msg, auth, socket }))
         })
     } catch (err) {

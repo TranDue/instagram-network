@@ -13,11 +13,9 @@
   border: 1px solid #ddd;
   padding: 50px 25px;
 }
-
 .auth_page form .pass {
   position: relative;
 }
-
 .auth_page form .pass small {
   position: absolute;
   top: 50%;

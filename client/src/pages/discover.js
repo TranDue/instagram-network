@@ -9,7 +9,6 @@ import { getDataAPI } from '../utils/fetchData'
 const Discover = () => {
     const { auth, discover } = useSelector(state => state)
     const dispatch = useDispatch()
-
     const [load, setLoad] = useState(false)
 
     useEffect(() => {

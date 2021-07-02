@@ -11,5 +11,4 @@ const themeReducer = (state = initialState, action) => {
     }
 }
 
-
 export default themeReducer

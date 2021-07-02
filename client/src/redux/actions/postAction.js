@@ -20,12 +20,10 @@ export const createPost = ({ content, images, auth, socket }) => async (dispatch
         if (images.length > 0) media = await imageUpload(images)
 
         const res = await postDataAPI('posts', { content, images: media }, auth.token)
-
         dispatch({
             type: POST_TYPES.CREATE_POST,
             payload: { ...res.data.newPost, user: auth.user }
         })
-
         dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: false } })
 
         // Notify
@@ -37,9 +35,7 @@ export const createPost = ({ content, images, auth, socket }) => async (dispatch
             content,
             image: media[0].url
         }
-
         dispatch(createNotify({ msg, auth, socket }))
-
     }
     catch (err) {
         dispatch({
@@ -58,7 +54,6 @@ export const getPosts = (token) => async (dispatch) => {
             type: POST_TYPES.GET_POSTS,
             payload: { ...res.data, page: 2 }
         })
-
         dispatch({ type: POST_TYPES.LOADING_POST, payload: false })
     } catch (err) {
         dispatch({
@@ -85,7 +80,6 @@ export const updatePost = ({ content, images, auth, status }) => async (dispatch
         const res = await patchDataAPI(`post/${status._id}`, {
             content, images: [...imgOldUrl, ...media]
         }, auth.token)
-
         dispatch({ type: POST_TYPES.UPDATE_POST, payload: res.data.newPost })
 
         dispatch({ type: GLOBALTYPES.ALERT, payload: { success: res.data.msg } })

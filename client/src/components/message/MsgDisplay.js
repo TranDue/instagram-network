@@ -82,7 +82,6 @@ const MsgDisplay = ({ user, msg, theme, data }) => {
 
                     </button>
                 }
-
             </div>
 
             <div className="chat_time">

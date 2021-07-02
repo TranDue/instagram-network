@@ -3,7 +3,6 @@ import { Link, useHistory } from 'react-router-dom'
 import { login } from '../redux/actions/authAction'
 import { useDispatch, useSelector } from 'react-redux'
 
-
 const Login = () => {
     const initialState = { email: '', password: '' }
     const [userData, setUserData] = useState(initialState)
@@ -48,7 +47,6 @@ const Login = () => {
                     <label htmlFor="exampleInputPassword1">Password</label>
 
                     <div className="pass">
-
                         <input type={typePass ? "text" : "password"}
                             className="form-control" id="exampleInputPassword1"
                             onChange={handleChangeInput} value={password} name="password" />

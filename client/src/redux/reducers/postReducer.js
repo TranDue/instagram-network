@@ -15,11 +15,13 @@ const postReducer = (state = initialState, action) => {
                 ...state,
                 posts: [action.payload, ...state.posts]
             };
+
         case POST_TYPES.LOADING_POST:
             return {
                 ...state,
                 loading: action.payload
             };
+
         case POST_TYPES.GET_POSTS:
             return {
                 ...state,
@@ -27,11 +29,13 @@ const postReducer = (state = initialState, action) => {
                 result: action.payload.result,
                 page: action.payload.page
             };
+
         case POST_TYPES.UPDATE_POST:
             return {
                 ...state,
                 posts: EditData(state.posts, action.payload._id, action.payload)
             };
+
         case POST_TYPES.DELETE_POST:
             return {
                 ...state,

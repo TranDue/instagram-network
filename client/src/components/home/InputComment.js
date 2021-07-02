@@ -17,7 +17,6 @@ const InputComment = ({ children, post, onReply, setOnReply }) => {
         }
 
         setContent('')
-
         const newComment = {
             content,
             likes: [],
@@ -26,9 +25,7 @@ const InputComment = ({ children, post, onReply, setOnReply }) => {
             reply: onReply && onReply.commentId,
             tag: onReply && onReply.user
         }
-
         dispatch(createComment({ post, newComment, auth, socket }))
-
         if (setOnReply) return setOnReply(false);
     }
 

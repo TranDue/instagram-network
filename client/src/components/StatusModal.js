@@ -49,7 +49,6 @@ const StatusModal = () => {
                 .then(mediaStream => {
                     videoRef.current.srcObject = mediaStream
                     videoRef.current.play()
-
                     const track = mediaStream.getTracks()
                     setTracks(track[0])
                 }).catch(err => console.log("Không tìm thấy micro/camera", err))

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import NoNotice from '../images/notice.png'
+import NoNotice from '../images/notify.jpg'
 import { Link } from 'react-router-dom'
 import Avatar from './Avatar'
 import moment from 'moment'
@@ -46,7 +46,7 @@ const NotifyModal = () => {
 
             {
                 notify.data.length === 0 &&
-                <img src={NoNotice} alt="NoNotice" className="w-100" />
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSqlhnUBCV8CLTToxEHfHHMTaDlyuuWpIDwpHTvbEEb9FYkyTahZ_BA3YTCvgwRpLivHg&usqp=CAU" alt="NoNotice" className="w-100" />
             }
 
             <div style={{ maxHeight: 'calc(100vh - 200px)', overflow: 'auto' }}>

@@ -13,7 +13,6 @@ import { useParams } from 'react-router-dom'
 const Profile = () => {
     const { profile, auth } = useSelector(state => state)
     const dispatch = useDispatch()
-
     const { id } = useParams()
     const [saveTab, setSaveTab] = useState(false)
 
@@ -25,7 +24,6 @@ const Profile = () => {
 
     return (
         <div className="profile">
-
             <Info auth={auth} profile={profile} dispatch={dispatch} id={id} />
 
             {
@@ -47,7 +45,6 @@ const Profile = () => {
                         }
                     </>
             }
-
         </div>
     )
 }

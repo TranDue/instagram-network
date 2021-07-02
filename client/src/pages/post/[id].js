@@ -15,7 +15,6 @@ const Post = () => {
 
     useEffect(() => {
         dispatch(getPost({ detailPost, id, auth }))
-
         if (detailPost.length > 0) {
             const newArr = detailPost.filter(post => post._id === id)
             setPost(newArr)

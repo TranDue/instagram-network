@@ -35,7 +35,6 @@ const Carousel = ({ images, id }) => {
                         </div>
                     ))
                 }
-
             </div>
 
             {
@@ -46,7 +45,6 @@ const Carousel = ({ images, id }) => {
                         <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span className="sr-only">Previous</span>
                     </a>
-
                     <a className="carousel-control-next" href={`#image${id}`} role="button" data-slide="next"
                         style={{ width: '5%' }}>
                         <span className="carousel-control-next-icon" aria-hidden="true"></span>
@@ -54,7 +52,6 @@ const Carousel = ({ images, id }) => {
                     </a>
                 </>
             }
-
         </div>
     )
 }

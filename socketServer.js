@@ -34,10 +34,8 @@ const SocketServer = (socket) => {
                 }
             }
         }
-
         users = users.filter(user => user.socketId !== socket.id)
     })
-
 
     // Likes
     socket.on('likePost', newPost => {
@@ -62,7 +60,6 @@ const SocketServer = (socket) => {
         }
     })
 
-
     // Comments
     socket.on('createComment', newPost => {
         const ids = [...newPost.user.followers, newPost.user._id]
@@ -86,7 +83,6 @@ const SocketServer = (socket) => {
         }
     })
 
-
     // Follow
     socket.on('follow', newUser => {
         const user = users.find(user => user.id === newUser._id)
@@ -98,7 +94,6 @@ const SocketServer = (socket) => {
         user && socket.to(`${user.socketId}`).emit('unFollowToClient', newUser)
     })
 
-
     // Notification
     socket.on('createNotify', msg => {
         const client = users.find(user => msg.recipients.includes(user.id))
@@ -108,16 +103,13 @@ const SocketServer = (socket) => {
     socket.on('removeNotify', msg => {
         const client = users.find(user => msg.recipients.includes(user.id))
         client && socket.to(`${client.socketId}`).emit('removeNotifyToClient', msg)
-
     })
-
 
     // Message
     socket.on('addMessage', msg => {
         const user = users.find(user => user.id === msg.recipient)
         user && socket.to(`${user.socketId}`).emit('addMessageToClient', msg)
     })
-
 
     // Check User Online / Offline
     socket.on('checkUserOnline', data => {
@@ -135,15 +127,11 @@ const SocketServer = (socket) => {
                 socket.to(`${client.socketId}`).emit('checkUserOnlineToClient', data._id)
             })
         }
-
     })
-
 
     // Call User
     socket.on('callUser', data => {
-
         users = EditData(users, data.sender, data.recipient)
-
         const client = users.find(user => user.id === data.recipient)
 
         if (client) {
@@ -167,7 +155,6 @@ const SocketServer = (socket) => {
             if (client.call) {
                 const clientCall = users.find(user => user.id === client.call)
                 clientCall && socket.to(`${clientCall.socketId}`).emit('endCallToClient', data)
-
                 users = EditData(users, client.call, null)
             }
         }

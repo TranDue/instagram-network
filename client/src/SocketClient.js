@@ -11,18 +11,16 @@ const spawnNotification = (body, icon, url, title) => {
     let options = {
         body, icon
     }
-    let n = new Notification(title, options)
 
+    let n = new Notification(title, options)
     n.onclick = e => {
         e.preventDefault()
         window.open(url, '_blank')
     }
 }
 const SocketClient = () => {
-
     const { auth, socket, notify, online, call } = useSelector(state => state)
     const dispatch = useDispatch()
-
     const audioRef = useRef()
 
     // joinUser
@@ -35,7 +33,6 @@ const SocketClient = () => {
         socket.on('likeToClient', newPost => {
             dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost })
         })
-
         return () => socket.off('likeToClient')
     }, [socket, dispatch])
 
@@ -43,7 +40,6 @@ const SocketClient = () => {
         socket.on('unLikeToClient', newPost => {
             dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost })
         })
-
         return () => socket.off('unLikeToClient')
     }, [socket, dispatch])
 
@@ -53,7 +49,6 @@ const SocketClient = () => {
         socket.on('createCommentToClient', newPost => {
             dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost })
         })
-
         return () => socket.off('createCommentToClient')
     }, [socket, dispatch])
 
@@ -61,7 +56,6 @@ const SocketClient = () => {
         socket.on('deleteCommentToClient', newPost => {
             dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost })
         })
-
         return () => socket.off('deleteCommentToClient')
     }, [socket, dispatch])
 
@@ -71,7 +65,6 @@ const SocketClient = () => {
         socket.on('followToClient', newUser => {
             dispatch({ type: GLOBALTYPES.AUTH, payload: { ...auth, user: newUser } })
         })
-
         return () => socket.off('followToClient')
     }, [socket, dispatch, auth])
 
@@ -79,7 +72,6 @@ const SocketClient = () => {
         socket.on('unFollowToClient', newUser => {
             dispatch({ type: GLOBALTYPES.AUTH, payload: { ...auth, user: newUser } })
         })
-
         return () => socket.off('unFollowToClient')
     }, [socket, dispatch, auth])
 
@@ -97,7 +89,6 @@ const SocketClient = () => {
                 'Instagram-NETWORK'
             )
         })
-
         return () => socket.off('createNotifyToClient')
     }, [socket, dispatch, notify.sound])
 
@@ -105,7 +96,6 @@ const SocketClient = () => {
         socket.on('removeNotifyToClient', msg => {
             dispatch({ type: NOTIFY_TYPES.REMOVE_NOTIFY, payload: msg })
         })
-
         return () => socket.off('removeNotifyToClient')
     }, [socket, dispatch])
 
@@ -124,7 +114,6 @@ const SocketClient = () => {
                 }
             })
         })
-
         return () => socket.off('addMessageToClient')
     }, [socket, dispatch])
 
@@ -141,7 +130,6 @@ const SocketClient = () => {
                 }
             })
         })
-
         return () => socket.off('checkUserOnlineToMe')
     }, [socket, dispatch, online])
 
@@ -151,7 +139,6 @@ const SocketClient = () => {
                 dispatch({ type: GLOBALTYPES.ONLINE, payload: id })
             }
         })
-
         return () => socket.off('checkUserOnlineToClient')
     }, [socket, dispatch, online])
 
@@ -160,7 +147,6 @@ const SocketClient = () => {
         socket.on('CheckUserOffline', id => {
             dispatch({ type: GLOBALTYPES.OFFLINE, payload: id })
         })
-
         return () => socket.off('CheckUserOffline')
     }, [socket, dispatch])
 
@@ -170,7 +156,6 @@ const SocketClient = () => {
         socket.on('callUserToClient', data => {
             dispatch({ type: GLOBALTYPES.CALL, payload: data })
         })
-
         return () => socket.off('callUserToClient')
     }, [socket, dispatch])
 
@@ -178,7 +163,6 @@ const SocketClient = () => {
         socket.on('userBusy', data => {
             dispatch({ type: GLOBALTYPES.ALERT, payload: { error: `${call.username} is busy!` } })
         })
-
         return () => socket.off('userBusy')
     }, [socket, dispatch, call])
 
